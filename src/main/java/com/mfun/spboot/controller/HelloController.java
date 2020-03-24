@@ -11,15 +11,12 @@ public class HelloController {
     @GetMapping("/")
     public Object hello() {
         return new Serializable() {
-            private String name = "庄颜";
-            private String hello = "你好呀";
-
             public String getName() {
-                return name;
+                return "庄颜";
             }
 
             public String getHello() {
-                return hello;
+                return "你好呀";
             }
         };
     }
