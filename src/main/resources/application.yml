@@ -1,0 +1,13 @@
+server:
+  port: 8090
+
+person:
+  name: 张艳
+  age: 19
+  boss: false
+  birthDate: 2017/11/01
+  map: {apple: 苹果, red: 黄色}
+  list: [足球, 排球, 羽毛球]
+  dog:
+    name: 球球
+    breed: 拉不拉多
