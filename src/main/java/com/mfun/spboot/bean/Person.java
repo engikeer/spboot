@@ -1,6 +1,9 @@
 package com.mfun.spboot.bean;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -8,7 +11,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+
 @Component
+@PropertySource({"classpath:person.properties"})
 @ConfigurationProperties(prefix = "person")
 public class Person implements Serializable {
     private String name;
