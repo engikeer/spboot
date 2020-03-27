@@ -11,7 +11,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
     <property name="appName" value="spboot"/>
 
     <!-- 控制台输出模式，彩色输出 -->
-    <substitutionProperty name="console.pattern" value="%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} %clr([%thread]) %clr(%5p) %clr(---){faint} %clr(%logger{50} %line){cyan} %clr(:){faint} %m%n%wEx" />
+    <substitutionProperty name="console.pattern" value="%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} %clr([%thread]) %clr(%5p) %clr(---){faint} %clr(%-50.50logger{49} %line){cyan} %clr(:){faint} %m%n%wEx" />
     <!-- clr 转换规则 -->
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
     <!-- wEx 转换规则 -->
