@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>成功</title>
 </head>
 <body>
-    <h3>成功了</h3>
+    <!-- 对字符进行转义，显示字符本身 -->
+    text: <div th:text="${hello}"></div>
+    <!-- 字符不转义，特殊字符 <、> 等会被作为标签 -->
+    utext: <div th:utext="${hello}"></div>
+    <br>
+    <!-- users 每有一个元素，就有一个 h4，元素用 user 代表 -->
+    <h4 th:each="user : ${users}">[[${user}]]</h4>
 </body>
 </html>
