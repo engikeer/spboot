@@ -8,8 +8,9 @@ import java.io.Serializable;
 @RestController
 public class HelloController {
 
-    @GetMapping("/")
+    @GetMapping("/hello")
     public Object hello() {
+
         return new Serializable() {
             public String getName() {
                 return "庄颜";
