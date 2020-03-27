@@ -1,26 +1,2 @@
 server:
-  port: 8092
-#person:
-#  name: 张艳
-#  age: 19
-#  boss: false
-#  birthDate: 2017/11/01
-#  map: {apple: 苹果, red: 黄色}
-#  list: [足球, 排球, 羽毛球]
-#  dog:
-#    name: 球球
-#    breed: 拉布拉多
-#spring:
-#  profiles:
-#    active: prod  # 指定激活的配置
-#--- # 以 --- 分隔文档块
-#spring:
-#  profiles: prod
-#server:
-#  port: 80
-#---
-#spring:
-#  profiles: default
-#server:
-
-#  port: 8080
+  port: 8090
