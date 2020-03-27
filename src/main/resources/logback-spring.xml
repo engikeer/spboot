@@ -9,6 +9,13 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
     <property name="LOG_HOME" value="log" />
     <!-- 定义日志文件名称 -->
     <property name="appName" value="spboot"/>
+
+    <!-- 控制台输出模式，彩色输出 -->
+    <substitutionProperty name="console.pattern" value="%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} %clr([%thread]) %clr(%5p) %clr(---){faint} %clr(%logger{50} %line){cyan} %clr(:){faint} %m%n%wEx" />
+    <!-- clr 转换规则 -->
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <!-- wEx 转换规则 -->
+    <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
     <!-- ch.qos.logback.core.ConsoleAppender 表示控制台输出 -->
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <!--
@@ -20,14 +27,14 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
 			%msg：日志消息，
 			%n是换行符
         -->
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <springProfile name="dev">
-                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ---> [%thread] %-5level %logger{50} - %msg%n</pattern>
-            </springProfile>
-            <springProfile name="!dev">
-                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ==== [%thread] %-5level %logger{50} - %msg%n</pattern>
-            </springProfile>
-        </layout>
+        <!-- 彩色输出使用 encoder，而不是 layout -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${console.pattern}</pattern>
+        </encoder>
+
+<!--        <layout class="ch.qos.logback.classic.PatternLayout">-->
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} -&ndash;&gt; [%thread] %-5level %logger{50} - %msg%n</pattern>-->
+<!--        </layout>-->
     </appender>
 
     <!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 -->  
