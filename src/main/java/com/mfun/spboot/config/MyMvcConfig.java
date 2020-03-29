@@ -12,8 +12,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        // 添加视图控制器
-        // vc 是要设置的路径，success 是目标视图名
-        registry.addViewController("/vc").setViewName("success");
+        registry.addViewController("/").setViewName("login");
+        registry.addViewController("/index.html").setViewName("login");
     }
 }
