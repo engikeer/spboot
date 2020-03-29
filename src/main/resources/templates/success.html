@@ -5,13 +5,13 @@
     <title>成功</title>
 </head>
 <body>
-    <h2>成功页面</h2>
-    <!-- 对字符进行转义，显示字符本身 -->
-    <div th:text="${hello}">欢迎消息</div>
-    <!-- 字符不转义，特殊字符 <、> 等会被作为标签 -->
-    <div th:utext="${hello}">欢迎消息</div>
-    <br>
-    <!-- users 每有一个元素，就有一个 h4，元素用 user 代表 -->
-    <h4 th:each="user : ${users}">[[${user}]]</h4>
+<h2>成功页面</h2>
+<!-- 对字符进行转义，显示字符本身 -->
+<div th:text="${hello}">欢迎消息</div>
+<!-- 字符不转义，特殊字符 <、> 等会被作为标签 -->
+<div th:utext="${hello}">欢迎消息</div>
+<br>
+<!-- users 每有一个元素，就有一个 h4，元素用 user 代表 -->
+<h4 th:each="user : ${users}">[[${user}]]</h4>
 </body>
 </html>
