@@ -1,6 +1,7 @@
 package com.mfun.spboot.controller;
 
-import com.mfun.spboot.exception.UserNotFoundException;
+import com.mfun.spboot.bean.Employee;
+import com.mfun.spboot.dao.EmployeeDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,10 +13,18 @@ import java.util.Map;
 @Controller
 public class HelloController {
 
-    @ResponseBody
+    private EmployeeDao employeeDao;
+
+    public HelloController(EmployeeDao employeeDao) {
+        this.employeeDao = employeeDao;
+    }
+
+//    @ResponseBody
     @GetMapping("/hello")
-    public Object hello() {
-        throw new UserNotFoundException("用户未找到");
+    public String hello(Map<String, Object> map) {
+        Employee employee = employeeDao.getOne(1002);
+        map.put("emp", employee);
+        return "test";
 
 //        return new Serializable() {
 //            public String getName() {

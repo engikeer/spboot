@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+<h3>员工：[[${emp}]]</h3>
+<h3>部门：[[${emp?.department}]]</h3>
+<h3>部门名：[[${emp?.department?.name}]]</h3>
+<h1>---------</h1>
+<h3 th:text="'员工：' + ${emp!=null?emp:''}"></h3>
+</body>
+</html>
