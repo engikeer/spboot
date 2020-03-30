@@ -27,35 +27,37 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <form th:action="@{/emp}" method="post">
+                <input type="hidden" name="_method" value="put" th:if="${emp}!=null">
+                <input type="hidden" name="id" th:value="${emp.id}" th:if="${emp}!=null">
                 <div class="form‐group">
                     <label>姓名</label>
-                    <input name="name" type="text" class="form‐control" placeholder="姓名">
+                    <input name="name" type="text" class="form‐control" th:value="${emp?.name}">
                 </div>
                 <div class="form‐group">
                     <label>Email</label>
-                    <input name="email" type="email" class="form‐control" placeholder="Email">
+                    <input name="email" type="email" class="form‐control" th:value="${emp?.email}">
                 </div>
                 <div class="form‐group">
                     <label>性别</label><br/>
                     <div class="form‐check form‐check‐inline">
-                        <input class="form‐check‐input" type="radio" name="gender" value="1">
+                        <input class="form‐check‐input" type="radio" name="gender" value="1" th:checked="${emp?.gender} == 1">
                         <label class="form‐check‐label">男</label>
                     </div>
                     <div class="form‐check form‐check‐inline">
-                        <input class="form‐check‐input" type="radio" name="gender" value="0">
+                        <input class="form‐check‐input" type="radio" name="gender" value="0" th:checked="${emp?.gender} == 0">
                         <label class="form‐check‐label">女</label>
                     </div>
                 </div>
                 <div class="form‐group"><label>部门</label>
                     <select class="form‐control" name="department.id">
-                        <option th:each="dept : ${depts}" th:value="${dept.id}">[[${dept.name}]]</option>
+                        <option th:each="dept : ${depts}" th:value="${dept.id}" th:selected="${dept.id} == ${emp?.department?.id}">[[${dept.name}]]</option>
                     </select>
                 </div>
                 <div class="form‐group">
                     <label>生日</label>
-                    <input name="birthDate" type="text" class="form‐control" placeholder="生日">
+                    <input name="birthDate" type="text" class="form‐control" th:value="${#dates.format(emp?.birthDate, 'yyyy-MM-dd')}">
                 </div>
-                <input type="submit" value="添加" class="btn btn-sm btn-primary">
+                <input type="submit" th:value="${emp}==null?'添加':'修改'" class="btn btn-sm btn-primary">
             </form>
         </main>
     </div>

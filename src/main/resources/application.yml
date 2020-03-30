@@ -10,5 +10,8 @@ spring:
     cache: false # 客户端不缓存 thymeleaf 页面，开发时避免清空缓存。上线前需设置为 true。
   mvc:
     date-format: yyyy-MM-dd
+    hiddenmethod:
+      filter:
+        enabled: true
   messages:
     basename: i18n.login

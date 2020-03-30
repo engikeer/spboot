@@ -67,67 +67,40 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="emp : ${emps}">
-                            <td>[[${emp.id}]]</td>
-                            <td>[[${emp.name}]]</td>
-                            <td>[[${emp.email}]]</td>
-                            <td>[[${emp.gender}==0?'女':'男']]</td>
-                            <td>[[${#dates.format(emp.birthDate, 'yyyy年MM月dd日')}]]</td>
-                            <td>[[${emp.department.name}]]</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary">修改</button>
-                                <button class="btn btn-sm btn-danger">删除</button>
-                            </td>
-                        </tr>
+                    <tr th:each="emp : ${emps}">
+                        <td>[[${emp.id}]]</td>
+                        <td>[[${emp.name}]]</td>
+                        <td>[[${emp.email}]]</td>
+                        <td>[[${emp.gender}==0?'女':'男']]</td>
+                        <td>[[${#dates.format(emp.birthDate, 'yyyy年MM月dd日')}]]</td>
+                        <td>[[${emp.department.name}]]</td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" th:href="@{/emp/} + ${emp.id}">修改</a>
+                            <button type="submit" class="btn btn-sm btn-danger deleteBtn"
+                                    th:attr="uri=@{/emp/} + ${emp.id}">删除</button>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
         </main>
+        <form id="deleteForm" method="post">
+            <input type="hidden" name="_method" value="delete">
+        </form>
     </div>
 </div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="asserts/js/jquery-3.2.1.slim.min.js"></script>
-<script type="text/javascript" src="asserts/js/popper.min.js"></script>
-<script type="text/javascript" src="asserts/js/bootstrap.min.js"></script>
-
-<!-- Icons -->
-<script type="text/javascript" src="asserts/js/feather.min.js"></script>
+<script type="text/javascript" th:src="@{/asserts/js/jquery-3.2.1.slim.min.js}"></script>
+<script type="text/javascript" th:src="@{/asserts/js/popper.min.js}"></script>
+<script type="text/javascript" th:src="@{/asserts/js/bootstrap.min.js}"></script>
 <script>
-    feather.replace()
-</script>
-
-<!-- Graphs -->
-<script type="text/javascript" src="asserts/js/Chart.min.js"></script>
-<script>
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            datasets: [{
-                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-                lineTension: 0,
-                backgroundColor: 'transparent',
-                borderColor: '#007bff',
-                borderWidth: 4,
-                pointBackgroundColor: '#007bff'
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: false
-                    }
-                }]
-            },
-            legend: {
-                display: false,
-            }
-        }
+    $(".deleteBtn").click(function () {
+        let uri = $(this).attr("uri");
+        $("#deleteForm").attr("action", uri).submit();
+        return false;
     });
 </script>
 
