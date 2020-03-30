@@ -1,5 +1,7 @@
 package com.mfun.spboot.dao;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -18,13 +20,15 @@ public class EmployeeDao {
 	private int initId = 1006;
 
 	@Autowired
-	public EmployeeDao(DepartmentDao departmentDao) {
+	public EmployeeDao(DepartmentDao departmentDao) throws ParseException {
 		this.departmentDao = departmentDao;
-		employeeMap.put(1001, new Employee(1001, "宋江", "及时雨@梁山.com", 1, departmentDao.getOne(102)));
-		employeeMap.put(1002, new Employee(1002, "扈三娘", "一丈青@扈家庄.com", 0, departmentDao.getOne(101)));
-		employeeMap.put(1003, new Employee(1003, "武松", "行者@梁山.com", 1, departmentDao.getOne(107)));
-		employeeMap.put(1004, new Employee(1004, "潘金莲", "小莲儿@好好吃炊饼.com", 0, departmentDao.getOne(105)));
-		employeeMap.put(1005, new Employee(1005, "时迁", "有求必应@梁山.com", 1, departmentDao.getOne(106)));
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+		employeeMap.put(1001, new Employee(1001, "宋江", "及时雨@梁山.com", 1, format.parse("1998-11-15"), departmentDao.getOne(102)));
+		employeeMap.put(1002, new Employee(1002, "扈三娘", "一丈青@扈家庄.com", 0, format.parse("1990-01-03"), departmentDao.getOne(101)));
+		employeeMap.put(1003, new Employee(1003, "武松", "行者@梁山.com", 1, format.parse("1993-07-07"), departmentDao.getOne(107)));
+		employeeMap.put(1004, new Employee(1004, "潘金莲", "小莲儿@好好吃炊饼.com", 0, format.parse("2006-03-25"), departmentDao.getOne(105)));
+		employeeMap.put(1005, new Employee(1005, "时迁", "有求必应@梁山.com", 1, format.parse("2010-12-31"), departmentDao.getOne(106)));
 	}
 
 	public void save(Employee employee) {

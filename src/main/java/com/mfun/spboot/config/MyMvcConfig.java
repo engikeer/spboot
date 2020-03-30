@@ -34,11 +34,11 @@ public class MyMvcConfig implements WebMvcConfigurer {
      * 添加拦截器
      * @param registry registry
      */
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-                .excludePathPatterns("/", "/index.html", "/user/login", "/asserts/**","/webjars/**");
-    }
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+//                .excludePathPatterns("/", "/index.html", "/user/login", "/asserts/**","/webjars/**");
+//    }
 
     @Bean
     public ViewResolver myViewResolver() {
