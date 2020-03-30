@@ -1,5 +1,6 @@
 package com.mfun.spboot.controller;
 
+import com.mfun.spboot.exception.UserNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,16 +15,17 @@ public class HelloController {
     @ResponseBody
     @GetMapping("/hello")
     public Object hello() {
+        throw new UserNotFoundException("用户未找到");
 
-        return new Serializable() {
-            public String getName() {
-                return "庄颜";
-            }
-
-            public String getHello() {
-                return "你好呀";
-            }
-        };
+//        return new Serializable() {
+//            public String getName() {
+//                return "庄颜";
+//            }
+//
+//            public String getHello() {
+//                return "你好呀";
+//            }
+//        };
     }
 
     @GetMapping("/success")
