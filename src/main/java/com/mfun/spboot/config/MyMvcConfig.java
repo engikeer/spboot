@@ -38,14 +38,17 @@ public class MyMvcConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-//                .excludePathPatterns("/", "/index.html", "/user/login", "/hello",
-//                        "/success", "/error/**", "/asserts/**","/webjars/**");
+        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+                .excludePathPatterns("/", "/index.html", "/user/login", "/hello",
+                        "/success", "/error/**", "/asserts/**","/webjars/**");
     }
 
 //    @Bean
 //    public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> webServerFactoryCustomizer() {
-//        return server -> server.setPort(9000);
+//        return server -> {
+//            server.setPort(9000);
+//            server.setContextPath("/crud");
+//        };
 //    }
 
     @Bean
