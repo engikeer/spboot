@@ -2,6 +2,9 @@ package com.mfun.spboot.config;
 
 import com.mfun.spboot.component.LoginHandlerInterceptor;
 import com.mfun.spboot.component.MyLocaleResolver;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
+import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -40,6 +43,11 @@ public class MyMvcConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/", "/index.html", "/user/login", "/hello",
                         "/success", "/error/**", "/asserts/**","/webjars/**");
     }
+
+//    @Bean
+//    public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> webServerFactoryCustomizer() {
+//        return server -> server.setPort(9000);
+//    }
 
     @Bean
     public ViewResolver myViewResolver() {
