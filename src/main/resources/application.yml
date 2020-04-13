@@ -17,3 +17,7 @@ spring:
         enabled: true
   messages:
     basename: i18n.login
+  datasource:
+    url: jdbc:mysql://localhost:3306/bookstore
+    username: engikeer
+    password: 111
