@@ -32,16 +32,16 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/main.html").setViewName("dashboard");
     }
 
-    /**
-     * 添加拦截器
-     * @param registry registry
-     */
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-                .excludePathPatterns("/", "/index.html", "/user/login", "/hello",
-                        "/success", "/error/**", "/asserts/**","/webjars/**");
-    }
+//    /**
+//     * 添加拦截器
+//     * @param registry registry
+//     */
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+//                .excludePathPatterns("/", "/index.html", "/user/login", "/hello",
+//                        "/success", "/error/**", "/asserts/**","/webjars/**");
+//    }
 
 //    @Bean
 //    public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> webServerFactoryCustomizer() {
