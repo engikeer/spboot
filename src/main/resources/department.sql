@@ -1,1 +1,0 @@
-CREATE TABLE ddtd (id int(8), name varchar(10));

@@ -1,1 +1,0 @@
-CREATE TABLE stu (id int(8), name varchar(10));
