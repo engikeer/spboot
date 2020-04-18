@@ -1,7 +1,9 @@
 package com.mfun.spboot;
 
 import com.mfun.spboot.bean.MyDepartment;
+import com.mfun.spboot.bean.MyEmployee;
 import com.mfun.spboot.mapper.DepartmentMapper;
+import com.mfun.spboot.mapper.EmployeeMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +13,9 @@ public class MyBatisTest {
 
     @Autowired
     private DepartmentMapper departmentMapper;
+
+    @Autowired
+    private EmployeeMapper employeeMapper;
 
     @Test
     void deptTest() {
@@ -28,5 +33,12 @@ public class MyBatisTest {
         if (one == null) {
             System.out.println("删除成功");
         }
+    }
+
+    @Test
+    void empTest() {
+        MyEmployee employee = employeeMapper.getOneById(1);
+        System.out.println(employee);
+        System.out.println(departmentMapper.getOneById(1));
     }
 }

@@ -2,9 +2,10 @@ package com.mfun.spboot.mapper;
 
 import com.mfun.spboot.bean.MyDepartment;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 // 标注 Mapper
-@Mapper
+//@Mapper
 public interface DepartmentMapper {
 
     @Select("SELECT * FROM department WHERE id=#{id}")
@@ -14,11 +15,11 @@ public interface DepartmentMapper {
     int deleteOneById(int id);
 
     // 使用 useGeneratedKeys 属性在插入后将生成的主键设置给参数对象
-    @Insert("INSERT INTO department (departmentName) VALUES (#{departmentName})")
+    @Insert("INSERT INTO department (department_name) VALUES (#{departmentName})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insertOne(MyDepartment department);
 
-    @Update("UPDATE department SET departmentName=#{departmentName} WHERE id=#{id}")
+    @Update("UPDATE department SET department_name=#{departmentName} WHERE id=#{id}")
     int updateOne(MyDepartment department);
 
 }
