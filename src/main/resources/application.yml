@@ -21,7 +21,7 @@ spring:
     url: jdbc:mysql://localhost:3306/bookstore
     username: engikeer
     password: 111
-    type: com.alibaba.druid.pool.DruidDataSource
+#    type: com.alibaba.druid.pool.DruidDataSource
     #   数据源其他配置
     initialSize: 5
     minIdle: 5
@@ -39,6 +39,10 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  jpa:
+    hibernate:
+      ddl-auto: update # 根据代码更新或创建数据表
+    show-sql: true # 在控制台显示执行的 sql
 #    schema:
 #      - classpath:sql/department.sql
 #      - classpath:sql/employee.sql
