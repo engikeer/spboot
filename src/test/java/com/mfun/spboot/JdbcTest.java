@@ -32,7 +32,7 @@ public class JdbcTest {
 
     @Test
     void jdbcTemplateTest() {
-        List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT * FROM bs_user");
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT * FROM employee");
         Map<String, Object> map = maps.get(0);
         for (Map.Entry<String, Object> entry : map.entrySet()) {
             System.out.println(entry.getKey() + "--" + entry.getValue());
